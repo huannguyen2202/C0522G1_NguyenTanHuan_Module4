@@ -15,10 +15,12 @@ public class SandwichController {
 
 
     @GetMapping(path = "/save")
-    public String save(@RequestParam("condiment") String[] condiment, ModelMap modelMap) {
-        modelMap.addAttribute("condiment", condiment);
+    public String save(@RequestParam(value = "condiment", defaultValue = "") String[] condiment, ModelMap modelMap) {
+        if (condiment.length == 0) {
+            modelMap.addAttribute("condiment", "Bạn chưa chọn loại gia vị!!!");
+        } else {
+            modelMap.addAttribute("condiment", condiment);
+        }
         return "save";
     }
-
-
 }

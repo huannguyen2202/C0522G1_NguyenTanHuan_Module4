@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb5b0a8b-fb0c-4199-acc1-d1217a8125dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/java/personal_calculator/controller/PersonalCalculatorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/java/personal_calculator/service/IPersonalCalculatorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/java/personal_calculator/service/impl/PersonalCalculatorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal_caculator/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sandwich_condiments/controller/SandwichController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/save.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../personal_caculator/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../personal_caculator/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../personal_caculator/src/main/java/personal_calculator/controller/PersonalCalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../personal_caculator/src/main/java/personal_calculator/controller/PersonalCalculatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sandwich_condiments/controller/SandwichController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sandwich_condiments/controller/SandwichController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../practice/see_current_time/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../practice/see_current_time/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +161,7 @@
       <updated>1662955337396</updated>
       <workItem from="1662955338989" duration="4234000" />
       <workItem from="1662967458532" duration="1332000" />
+      <workItem from="1663031704273" duration="789000" />
     </task>
     <servers />
   </component>

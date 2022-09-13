@@ -11,7 +11,7 @@ import personal_calculator.service.IPersonalCalculatorService;
 @Controller
 public class PersonalCalculatorController {
     @Autowired
-    IPersonalCalculatorService iPersonalCalculatorService;
+    private IPersonalCalculatorService iPersonalCalculatorService;
 
     @RequestMapping("/")
     public String loadIndex() {
