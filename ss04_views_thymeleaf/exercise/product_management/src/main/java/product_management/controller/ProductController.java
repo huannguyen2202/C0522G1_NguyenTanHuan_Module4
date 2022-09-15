@@ -31,9 +31,10 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String save(Product product) {
+    public String save(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         product.setId((int) (Math.random() * 10000));
         productService.save(product);
+        redirectAttributes.addFlashAttribute("message", "Create student: " + product.getProductName() + " OK!");
         return "redirect:/product";
     }
 
@@ -69,9 +70,10 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public String searchName(@RequestParam String name, Model model) {
-        model.addAttribute("productList", productService.findByName(name));
+    public String search(@RequestParam String name, Model model) {
+        model.addAttribute("product", productService.finByName(name));
         return "list";
     }
+
 
 }

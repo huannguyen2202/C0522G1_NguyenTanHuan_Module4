@@ -29,7 +29,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void update( Product product) {
+    public void update(Product product) {
         iProductRepository.update(product);
     }
 
@@ -39,7 +39,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> findByName(String name) {
-        return iProductRepository.findByName(name);
+    public List<Product> finByName(String name) {
+        return iProductRepository.finByName(name);
     }
+
+//    @Override
+//    public List<Product> findByName(String name) {
+//        return iProductRepository.findByName(name);
+//    }
 }

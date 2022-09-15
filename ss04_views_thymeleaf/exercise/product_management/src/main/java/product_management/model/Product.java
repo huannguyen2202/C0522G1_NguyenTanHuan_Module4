@@ -1,6 +1,11 @@
 package product_management.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
+    @Id
     private int id;
     private String productName;
     private int productPrice;

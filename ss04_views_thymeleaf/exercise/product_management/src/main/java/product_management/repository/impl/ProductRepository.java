@@ -1,64 +1,117 @@
 package product_management.repository.impl;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import product_management.model.Product;
+import product_management.repository.ConnectionUtil;
 import product_management.repository.IProductRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class ProductRepository implements IProductRepository {
-    private static final Map<Integer, Product> products;
-
-    static {
-        products = new HashMap<>();
-        products.put(1, new Product(1, "TL-027", 4000, "Mau xanh", "Thien Long"));
-        products.put(2, new Product(2, "Tay", 4000, "Mau den", "Deli"));
-        products.put(3, new Product(3, "but chi", 3000, "Mau vang", "G-start"));
-        products.put(4, new Product(4, "vo", 7000, "Mau trang", "Hai Tien"));
-        products.put(5, new Product(5, "but mau", 20000, "nhieu mau", "Thien Long"));
-        products.put(6, new Product(6, "ghim", 4000, "Mau trang", "Deli"));
-    }
 
     @Override
     public List<Product> findAll() {
-        return new ArrayList<>(products.values());
-    }
-
-    @Override
-    public void save(Product product) {
-        products.put(product.getId(), product);
-
-    }
-
-    @Override
-    public Product findById(int id) {
-        return products.get(id);
-    }
-
-    @Override
-    public void update(Product product) {
-        products.put(product.getId(), product);
-    }
-
-    @Override
-    public void remove(int id) {
-        products.remove(id);
-    }
-
-    @Override
-    public List<Product> findByName(String name) {
-        List<Product> productList = new ArrayList<>();
-        for (Map.Entry<Integer, Product> iteam : products.entrySet()) {
-            if (iteam.getValue().getProductName().contains(name)) {
-                productList.add(iteam.getValue());
+        Session session = null;
+        List<Product> productList = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            productList = session.createQuery("FROM Product ").getResultList();
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
         return productList;
     }
 
+    @Override
+    public void save(Product product) {
+        Transaction transaction = null;
+        Session session = null;
 
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            session.save(product);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+    }
+
+    @Override
+    public Product findById(int id) {
+        String queryStr = "SELECT c FROM Product AS c WHERE c.id = :id";
+        TypedQuery<Product> query = ConnectionUtil.entityManager.createQuery(queryStr, Product.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public void update(Product product) {
+        Transaction transaction = null;
+        Session session = null;
+
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            session.update(product);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public void remove(int id) {
+        TypedQuery<Product> query = ConnectionUtil.entityManager.createQuery("SELECT p FROM Product AS p WHERE p.id = :id", Product.class);
+        query.setParameter("id", id);
+        Product product = query.getSingleResult();
+
+        Transaction transaction = null;
+        Session session = null;
+
+
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            session.remove(product);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public List<Product> finByName(String name) {
+        TypedQuery<Product> query = ConnectionUtil.entityManager.createQuery("select p from Product as p where p.productName like :name", Product.class);
+        query.setParameter("name", "%" + name + "%");
+        return query.getResultList();
+    }
 }
