@@ -34,19 +34,19 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${productList}">
-        <td th:text="${row.getProductName()}"></td>
-        <td th:text="${row.getProductPrice()}"></td>
-        <td th:text="${row.getDescription()}"></td>
-        <td th:text="${row.getProducer()}"></td>
+        <td th:text="${row.productName}"></td>
+        <td th:text="${row.productPrice}"></td>
+        <td th:text="${row.description}"></td>
+        <td th:text="${row.producer}"></td>
         <td>
-            <a th:href="@{/product/{id}/edit(id=${row.getId()})}">
+            <a th:href="@{/product/{id}/edit(id=${row.id})}">
                 <button class="btn btn-primary btn-outline-secondary btn-sm">
                     <span class=" text-light h6 m-auto px-2">edit</span>
                 </button>
             </a>
         </td>
-        <td><a th:href="@{/product/{id}/delete(id=${row.getId()})}">delete</a></td>
-        <td><a th:href="@{/product/{id}/view(id=${row.getId()})}">view</a></td>
+        <td><a th:href="@{/product/{id}/delete(id=${row.id})}">delete</a></td>
+        <td><a th:href="@{/product/{id}/view(id=${row.id})}">view</a></td>
     </tr>
     </tbody>
 </table>
