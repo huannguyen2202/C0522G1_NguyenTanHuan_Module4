@@ -1,0 +1,1 @@
+SELECT * FROM c05_blog_jpa_orm.blog;

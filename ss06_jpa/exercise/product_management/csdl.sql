@@ -1,0 +1,1 @@
+SELECT * FROM c05_product_jpa_orm.product;
