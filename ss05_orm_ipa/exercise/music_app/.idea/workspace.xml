@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9ed21df-0511-4466-922d-10ff94e48b93" name="Changes" comment="" />
+    <list default="true" id="c9ed21df-0511-4466-922d-10ff94e48b93" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../ss06_jpa/exercise/blog_app/src/main/java/blog_app/blog_app/model/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/blog_app/src/main/java/blog_app/blog_app/model/Blog.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ss04_views_thymeleaf/exercise/product_management" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -175,6 +177,7 @@
       <workItem from="1663237385905" duration="266000" />
       <workItem from="1663238724180" duration="8943000" />
       <workItem from="1663249791950" duration="11000" />
+      <workItem from="1663569632983" duration="219000" />
     </task>
     <servers />
   </component>

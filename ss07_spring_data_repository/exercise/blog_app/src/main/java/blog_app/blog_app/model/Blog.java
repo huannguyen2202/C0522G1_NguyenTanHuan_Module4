@@ -1,19 +1,21 @@
 package blog_app.blog_app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Blog {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String blogCreator;
     private String blogName;
     private String content;
+    @Column(columnDefinition = "Date")
     private String dateCreated;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    private Category category;
 
     public Blog() {
     }
@@ -24,6 +26,14 @@ public class Blog {
         this.blogName = blogName;
         this.content = content;
         this.dateCreated = dateCreated;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getId() {
