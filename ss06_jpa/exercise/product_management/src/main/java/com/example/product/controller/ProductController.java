@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -16,13 +15,6 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
-
-    @GetMapping("")
-    public String list(Model model) {
-        List<Product> productList = productService.findAll();
-        model.addAttribute("productList", productList);
-        return "list";
-    }
 
     @GetMapping("/create")
     public String create(Model model) {
@@ -32,7 +24,6 @@ public class ProductController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
-        product.setId((int) (Math.random() * 10000));
         productService.save(product);
         redirectAttributes.addFlashAttribute("message", "Create student: " + product.getProductName() + " OK!");
         return "redirect:/product";
@@ -69,8 +60,8 @@ public class ProductController {
         return "view";
     }
 
-    @GetMapping("/search")
-    public String search(@RequestParam String name, Model model) {
+    @GetMapping({"","/product"})
+    public String search(@RequestParam(defaultValue = "") String name, Model model) {
         model.addAttribute("productList", productService.finByName(name));
         return "list";
     }
