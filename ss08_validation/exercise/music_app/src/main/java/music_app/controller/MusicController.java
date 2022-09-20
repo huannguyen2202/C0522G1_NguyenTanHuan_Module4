@@ -44,7 +44,7 @@ public class MusicController {
             return "redirect:/music";
         }
     }
-    @GetMapping("/edit/{id}")
+    @GetMapping("/{id}/edit")
     public String editMusic(@PathVariable int id, Model model) {
         MusicDto musicDto = new MusicDto();
         Music music = iMusicService.findById(id);
@@ -67,7 +67,8 @@ public class MusicController {
 
             iMusicService.update(music);
             redirectAttributes.addFlashAttribute("mess", "Add new successful!!");
+            return "redirect:/music";
         }
-        return "redirect:/music";
+
     }
 }
