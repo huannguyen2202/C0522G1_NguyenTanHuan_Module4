@@ -17,7 +17,7 @@ public interface IBlogService {
 
     void remove(int id);
 
-    List<Blog> finByName(String name);
+    Page<Blog> finByName(String name, Pageable pageable);
 
     Page<Blog> findAll(Pageable pageable);
 }

@@ -21,17 +21,17 @@ public class BlogController {
     @Autowired
     private ICategoryService categoryService;
 
-    @GetMapping("")
-    public String list(@PageableDefault(value = 3) Pageable pageable, Model model) {
-        model.addAttribute("blogList", blogService.findAll(pageable));
-        return "list";
-    }
+//    @GetMapping("")
+//    public String list(@PageableDefault(value = 3) Pageable pageable, Model model) {
+//        model.addAttribute("blogList", blogService.findAll(pageable));
+//        return "blog/list";
+//    }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("categoryList", categoryService.findAll());
         model.addAttribute("blog", new Blog());
-        return "create";
+        return "blog/create";
     }
 
     @PostMapping("/save")
@@ -43,8 +43,9 @@ public class BlogController {
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("categoryList", categoryService.findAll());
         model.addAttribute("blog", blogService.findById(id));
-        return "edit";
+        return "blog/edit";
     }
 
     @PostMapping("/update")
@@ -56,7 +57,7 @@ public class BlogController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
-        return "delete";
+        return "blog/delete";
     }
 
     @PostMapping("/delete")
@@ -69,12 +70,13 @@ public class BlogController {
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
-        return "view";
+        return "blog/view";
     }
 
-    @GetMapping("/search")
-    public String search(String name, Model model) {
-        model.addAttribute("blogList", blogService.finByName(name));
-        return "list";
+    @GetMapping("")
+    public String search(@RequestParam(value = "name", defaultValue = "") String name,@PageableDefault(value = 3) Pageable pageable, Model model) {
+        model.addAttribute("blogList", blogService.finByName(name,pageable));
+        model.addAttribute("name",name);
+        return "blog/list";
     }
 }

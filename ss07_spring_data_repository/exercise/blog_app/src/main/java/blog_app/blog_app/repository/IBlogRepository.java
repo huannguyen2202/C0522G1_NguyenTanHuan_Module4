@@ -12,7 +12,7 @@ import java.util.List;
 public interface IBlogRepository extends JpaRepository<Blog,Integer> {
     Blog findById(int id);
     @Query(value = "select * from blog where blog_name like %:keyword%", nativeQuery = true)
-    List<Blog> searchByName(@Param("keyword") String name);
+    Page<Blog> searchByName(@Param("keyword") String name);
 
     @Query(value = "select * from blog order by date_created ASC ", nativeQuery = true)
     Page<Blog> findAll(Pageable pageable);

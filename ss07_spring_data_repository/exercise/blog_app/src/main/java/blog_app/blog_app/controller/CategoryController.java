@@ -2,11 +2,8 @@ package blog_app.blog_app.controller;
 
 import blog_app.blog_app.model.Blog;
 import blog_app.blog_app.model.Category;
-import blog_app.blog_app.service.IBlogService;
 import blog_app.blog_app.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +18,13 @@ public class CategoryController {
     @GetMapping("")
     public String list(Model model) {
         model.addAttribute("categoryList", categoryService.findAll());
-        return "list_category";
+        return "category/list_category";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("category", new Category());
-        return "create_category";
+        return "category/create_category";
     }
 
     @PostMapping("/save")
@@ -39,7 +36,7 @@ public class CategoryController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("category", categoryService.findById(id));
-        return "edit_category";
+        return "category/edit_category";
     }
 
     @PostMapping("/update")
@@ -50,7 +47,7 @@ public class CategoryController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable int id, Model model) {
         model.addAttribute("category", categoryService.findById(id));
-        return "delete_category";
+        return "category/delete_category";
     }
 
     @PostMapping("/delete")

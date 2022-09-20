@@ -40,7 +40,7 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public List<Blog> finByName(String name) {
+    public Page<Blog> finByName(String name, Pageable pageable) {
         return iBlogRepository.searchByName(name);
     }
 
