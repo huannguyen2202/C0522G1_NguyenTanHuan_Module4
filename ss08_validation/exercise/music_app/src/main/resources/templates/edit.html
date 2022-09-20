@@ -13,19 +13,19 @@
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label>Blog Creator</label>
+            <label>Name</label>
             <input type="text" th:field="*{name}"/>
             <p style="color: red" th:errors="*{name}"
                th:if="${#fields.hasErrors('name')}"></p>
         </div>
         <div>
-            <label>Blog Name</label>
+            <label>Singer</label>
             <input type="email" th:field="*{singer}"/>
             <p style="color: red" th:errors="*{singer}"
                th:if="${#fields.hasErrors('singer')}"></p>
         </div>
         <div>
-            <label>Content</label>
+            <label>Category</label>
             <input type="text" th:field="*{category}"/>
             <p style="color: red" th:errors="*{category}"
                th:if="${#fields.hasErrors('category')}"></p>

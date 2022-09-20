@@ -44,6 +44,7 @@ public class MusicController {
             return "redirect:/music";
         }
     }
+
     @GetMapping("/{id}/edit")
     public String editMusic(@PathVariable int id, Model model) {
         MusicDto musicDto = new MusicDto();

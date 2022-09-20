@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <title>Spring Blog</title>
 
     <style type="text/css">
-        h3{ padding: 10px 0 10px 20px;}
-        footer{margin: 10px 0;}
+        h3 {
+            padding: 10px 0 10px 20px;
+        }
+
+        footer {
+            margin: 10px 0;
+        }
 
         #users {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -22,9 +27,13 @@
             padding: 8px;
         }
 
-        #users tr:nth-child(even){background-color: #f2f2f2;}
+        #users tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #users tr:hover {background-color: #ddd;}
+        #users tr:hover {
+            background-color: #ddd;
+        }
 
         #users th {
             padding-top: 12px;
@@ -34,8 +43,9 @@
             color: white;
         }
 
-        input[type=text],input[type=email]{
-            width: 100%;a
+        input[type=text], input[type=email] {
+            width: 100%;
+            a
             padding: 12px 0px;
             margin: 8px 0;
             display: inline-block;
@@ -43,7 +53,8 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        input[type=number],input[type=email]{
+
+        input[type=number], input[type=email] {
             width: 100%;
             padding: 12px 0px;
             margin: 8px 0;
@@ -76,7 +87,10 @@
             padding: 20px;
         }
 
-        .notify span{font-size: 15px; color: blue;}
+        .notify span {
+            font-size: 15px;
+            color: blue;
+        }
     </style>
 </head>
 <body>

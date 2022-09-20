@@ -21,7 +21,7 @@ public class UserDto implements Validator {
     @Min(value = 18, message = "Tuoi phai lon hon hoac bang 18 tuoi")
     private String age;
     @NotBlank(message = "Khong duoc de trong!")
-    @Pattern(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]{2,}(\\.[A-Za-z0-9]{2,}){1,2}$", message = "Email phải đúng định dạng")
+    @Pattern(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]{2,}(\\.[A-Za-z0-9]{2,}){1,2}$", message = "Email phai dung dinh dang")
     private String email;
 
     public UserDto() {
