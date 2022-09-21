@@ -18,6 +18,7 @@ import validate_form.service.IUserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private IUserService iUserService;
 

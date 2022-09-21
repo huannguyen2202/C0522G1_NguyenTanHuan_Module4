@@ -7,21 +7,25 @@ import javax.validation.constraints.*;
 
 public class UserDto implements Validator {
     private int id;
+
     @NotBlank(message = "Khong duoc de trong!")
     @Size(min = 5, max = 45, message = "Tên co tu 5-45 ki tu")
     private String firstName;
+
     @NotBlank(message = "Khong duoc de trong!")
     @Size(min = 5, max = 45, message = "Tên co tu 5-45 ki tu")
     private String lastName;
+
     @NotBlank(message = "Khong duoc de trong!")
     @Pattern(regexp = "[0][0-9]{9}", message = "So dien thoai phai bat dau bang so 0 va 9 so bat ki theo sau")
     private String phoneNumber;
+
     @NotBlank(message = "Khong duoc de trong!")
-    @Max(value = 80, message = "Tuoi phai nho hon hoac bang 80 tuoi")
     @Min(value = 18, message = "Tuoi phai lon hon hoac bang 18 tuoi")
     private String age;
+
     @NotBlank(message = "Khong duoc de trong!")
-    @Pattern(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]{2,}(\\.[A-Za-z0-9]{2,}){1,2}$", message = "Email phai dung dinh dang")
+    @Email(message = "Nhap email dung dinh dang")
     private String email;
 
     public UserDto() {
