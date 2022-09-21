@@ -1,42 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="blog/layout :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/layout :: head">
+    <meta charset="UTF-8">
+    <title>Thêm mới</title>
+</head>
 <body>
-<h3>Add Blog</h3>
+<h2>Add Blogs</h2>
 <p>
-    <a th:href="@{/templates/blog}">
-        Back to blog list
-    </a>
+    <a th:href="@{/blogs}">Back to Blogst list</a>
 </p>
 <div id="form">
-    <form th:action="@{/blog/save}" th:object="${blog}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
+    <form action="/blogs/save" th:object="${blogs}" method="post">
         <div>
-            <label>Blog Creator</label>
-            <input type="text" th:field="*{blogCreator}"/>
+            <input type="hidden"  th:field="*{id}"/>
         </div>
         <div>
-            <label>Blog Name</label>
-            <input type="email" th:field="*{blogName}"/>
+            <label>Creator Blog</label>
+            <input type="text" th:field="*{creatorBlog}"/>
         </div>
         <div>
-            <label>Content</label>
-            <input type="text" th:field="*{content}"/>
+            <label>Name Blog</label>
+            <input type="text" th:field="*{nameBlog}"/>
         </div>
         <div>
             <label>Date Created</label>
             <input type="date" th:field="*{dateCreated}"/>
         </div>
         <div>
-            <label>Category</label>
+            <label>Content</label>
+            <textarea th:field="*{content}"></textarea>
+        </div>
+        <div>
+            <label>Link Blog</label>
+            <input type="text" th:field="*{linkBlog}"/>
+        </div>
+        <div>
+            <label>Category: </label>
             <select th:field="*{category}">
-                <option th:each="items: ${categoryList}" th:text="${items.categoryName}" th:value="${items.id}"></option>
+                <option th:each="items: ${categoryList}" th:text="${items.nameCategory}" th:value="${items.id}"></option>
             </select>
         </div>
         <input type="submit" value="Save"/>
     </form>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="blog/layout :: footer"></footer>
 </body>
 </html>
