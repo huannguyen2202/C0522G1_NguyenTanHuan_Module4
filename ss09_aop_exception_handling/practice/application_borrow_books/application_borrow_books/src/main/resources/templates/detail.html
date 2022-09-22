@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Detail Book</title>
+
+</head>
+<body>
+
+<h1>DETAIL BOOK</h1>
+
+<button type="button" class="btn btn-success">
+    <a href="/books">Book List</a>
+</button>
+
+<form id="form" th:action="@{/detail}" th:object="${book}" method="post">
+
+    <input th:type="hidden" name="id" th:field="*{id}">
+
+    <table>
+        <tr>
+            <td>Book name:</td>
+            <td><input type="text" size="95px" th:field="*{name}" readonly/></td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td><input type="text" size="95px" th:field="*{category}" readonly/></td>
+        </tr>
+        <tr>
+            <td>Author:</td>
+            <td><input type="text" size="95px" th:field="*{author}" readonly/></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td><input type="text" size="95px" th:field="*{quantity}" readonly/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Borrow</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+
+<footer th:replace="/layout :: footer"></footer>
+
+</body>
+</html>

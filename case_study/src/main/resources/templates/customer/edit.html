@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/customer/layout :: head"></head>
+<body>
+<h3>Edit Customer</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/customer/update}" th:object="${customerDto}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{customerId}"/>
+        <div>
+            <label>Customer Name</label>
+            <input type="text" th:field="*{customerName}"/>
+            <p style="color: red" th:errors="*{customerName}"
+               th:if="${#fields.hasErrors('customerName')}"></p>
+        </div>
+        <div>
+            <label>Customer Birthday</label>
+            <input type="date" th:field="*{customerBirthday}"/>
+            <p style="color: red" th:errors="*{customerBirthday}"
+               th:if="${#fields.hasErrors('customerBirthday')}"></p>
+        </div>
+        <div>
+            <label>Customer Gender</label>
+            <input type="text" th:field="*{customerGender}"/>
+            <p style="color: red" th:errors="*{customerGender}"
+               th:if="${#fields.hasErrors('customerGender')}"></p>
+        </div>
+        <div>
+            <label>Customer IdCard</label>
+            <input type="text" th:field="*{customerIdCard}"/>
+            <p style="color: red" th:errors="*{customerIdCard}"
+               th:if="${#fields.hasErrors('customerIdCard')}"></p>
+        </div>
+        <div>
+            <label>Customer Phone</label>
+            <input type="text" th:field="*{customerPhone}"/>
+            <p style="color: red" th:errors="*{customerPhone}"
+               th:if="${#fields.hasErrors('customerPhone')}"></p>
+        </div>
+        <div>
+            <label>Customer Email</label>
+            <input type="text" th:field="*{customerEmail}"/>
+            <p style="color: red" th:errors="*{customerEmail}"
+               th:if="${#fields.hasErrors('customerEmail')}"></p>
+        </div>
+        <div>
+            <label>Customer Address</label>
+            <input type="text" th:field="*{customerAddress}"/>
+            <p style="color: red" th:errors="*{customerAddress}"
+               th:if="${#fields.hasErrors('customerAddress')}"></p>
+        </div>
+        <input type="submit" value="Edit"/>
+    </form>
+</div>
+<footer th:replace="/customer/layout :: footer"></footer>
+</body>
+</html>

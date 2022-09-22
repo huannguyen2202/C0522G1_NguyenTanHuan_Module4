@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Book List</h3>
+<p>
+    <a th:href="@{/book/create}">
+        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
+        THÊM SÁCH
+    </a>
+</p>
+<table id="books">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Book Name</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>Amount</th>
+        <th>Borrow</th>
+        <th>Pay</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${bookList}">
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.bookName}"></td>
+        <td th:text="${row.category}"></td>
+        <td th:text="${row.author}"></td>
+        <td th:text="${row.amount}"></td>
+        <td>
+            <a th:href="@{/book/{id}/edit(id=${row.id})}">
+                <button class="btn btn-primary btn-outline-secondary btn-sm">
+                    <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
+                </button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/book/{id}/pay(id=${row.id})}">
+                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
+                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
+                </button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/book/{id}/view(id=${row.id})}">
+                <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm">
+                    <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2 text-light h6 m-auto px-2"></span>
+                </button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

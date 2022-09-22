@@ -5,7 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9ed21df-0511-4466-922d-10ff94e48b93" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../ss06_jpa/exercise/blog_app/src/main/java/blog_app/blog_app/model/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss06_jpa/exercise/blog_app/src/main/java/blog_app/blog_app/model/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/model/CustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/repository/ICustomerTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/ICustomerTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/impl/CustomerTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/exception/BookException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/model/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/repository/IBookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/service/IBookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/java/book_management/service/impl/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/pay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/dto/CustomerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/dto/CustomerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/repository/ICustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/java/case_study/service/impl/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/customer/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../case_study/src/main/resources/templates/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss09_aop_exception_handling/esercise/book_management/src/main/resources/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +210,8 @@
       <workItem from="1663238724180" duration="8943000" />
       <workItem from="1663249791950" duration="11000" />
       <workItem from="1663569632983" duration="219000" />
+      <workItem from="1663734871910" duration="21000" />
+      <workItem from="1663830479891" duration="2448000" />
     </task>
     <servers />
   </component>
