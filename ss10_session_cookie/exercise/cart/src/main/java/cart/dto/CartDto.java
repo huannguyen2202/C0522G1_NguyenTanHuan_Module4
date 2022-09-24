@@ -33,4 +33,14 @@ public class CartDto {
     public void remove(ProductDto productDto) {
         productMap.remove(productDto);
     }
+    public void deleteProduct(ProductDto productDto) {
+        if (productMap.containsKey(productDto)) {
+            if (productMap.get(productDto) > 1) {
+                Integer currentValue = productMap.get(productDto);
+                productMap.replace(productDto, currentValue - 1);
+            } else {
+                productMap.remove(productDto);
+            }
+        }
+    }
 }

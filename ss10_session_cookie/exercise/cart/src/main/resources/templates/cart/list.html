@@ -25,13 +25,14 @@
                    th:if="${cart !=null && cart.getProductMap().size()>0}">
                 <thead>
                 <tr>
-                    <th>Index</th>
-                    <th>Product Name</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Amount</th>
-                    <th>Total</th>
-                    <th>Delete</th>
+                    <th style="text-align: center">Index</th>
+                    <th style="text-align: center">Product Name</th>
+                    <th style="text-align: center">Image</th>
+                    <th style="text-align: center">Price</th>
+                    <th style="text-align: center">Amount</th>
+                    <th style="text-align: center">Total</th>
+                    <th style="text-align: center">Delete Product</th>
+                    <th style="text-align: center">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,8 +43,11 @@
                     <td th:text="${productMap.key.price}"></td>
                     <td th:text="${productMap.value}"></td>
                     <td th:text="${productMap.key.price * productMap.value}"></td>
+                    <td class="text-center">
+                        <a class="btn btn-warning" role="button" th:href="@{shop/delete/__${productMap.key.id}__}">-</a>
+                    </td>
                     <td>
-                        <a th:href="@{/shop/delete/__${productMap.key.id}__}">
+                        <a th:href="@{/shop/deleteAll/__${productMap.key.id}__}">
                             <button class="btn btn-danger">Delete</button>
                         </a>
                     </td>
