@@ -21,7 +21,7 @@ public class Blogs {
     @ManyToOne
 
     @JoinColumn(name = "category_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonManagedReference
     private Category category;
 
     public Blogs() {

@@ -23,7 +23,9 @@ public interface IBlogsRepository extends JpaRepository<Blogs,Integer> {
 
     @Query(value = "select  * from blogs order by date_created DESC ",nativeQuery = true)
     Page<Blogs> findAll(Pageable pageable);
-
     @Query(value = "select b.name_blog as nameBlog, c.name_category as nameCategory from blogs b join category c on b.category_id=c.id",nativeQuery = true )
     List<IBlogDto> showList();
+
+    @Query(value = "select *from blogs where category_id =:key",nativeQuery = true)
+    List<Blogs> sarchBlogsByCategory(@Param("key") int id);
 }
