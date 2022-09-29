@@ -7,6 +7,7 @@ import phone_management.repository.IPhoneRepository;
 import phone_management.service.IPhoneService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PhoneService implements IPhoneService {
@@ -15,12 +16,12 @@ public class PhoneService implements IPhoneService {
     private IPhoneRepository iPhoneRepository;
 
     @Override
-    public List<Phone> findAll() {
+    public Iterable<Phone> findAll() {
         return iPhoneRepository.findAll();
     }
 
     @Override
-    public Phone findById(int id) {
+    public Optional<Phone> findById(Long id) {
         return iPhoneRepository.findById(id);
     }
 
@@ -30,7 +31,14 @@ public class PhoneService implements IPhoneService {
     }
 
     @Override
-    public void remove(int id) {
-        iPhoneRepository.delete(findById(id));
+    public void remove(Long id) {
+        iPhoneRepository.deleteById(id);
+
+    }
+
+    @Override
+    public void update(Phone phone) {
+        iPhoneRepository.save(phone);
+
     }
 }
