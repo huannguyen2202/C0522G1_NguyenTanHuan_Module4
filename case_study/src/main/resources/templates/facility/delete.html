@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<h3>Remove Facility</h3>
+<p>
+    <a th:href="@{/facility}">
+        Back to facility list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/facility/delete}" th:object="${facilityList}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{facilityId}"/>
+        <div>
+            <label>Facility Name</label>
+            <input type="text" th:field="*{facilityName}"/>
+        </div>
+        <input type="submit" value="Remove"/>
+    </form>
+</div>
+<footer th:replace="/facility/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<h3 style="text-align: center">Add Facility</h3>
+<p style="text-align: center">
+    <a th:href="@{/facility}">
+        Back to facility list
+    </a>
+</p>
+
+<div id="form">
+    <form th:action="@{/facility/save}" th:object="${facilityDto}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{facilityId}"/>
+        <div>
+            <label>Tên Dịch Vụ</label>
+            <input type="text" th:field="*{facilityName}"/>
+            <p style="color: red" th:errors="*{facilityName}"
+               th:if="${#fields.hasErrors('facilityName')}"></p>
+        </div>
+        <div>
+            <label>Diện tích sử dụng</label>
+            <input type="text" th:field="*{facilityArea}"/>
+            <p style="color: red" th:errors="*{facilityArea}"
+               th:if="${#fields.hasErrors('facilityArea')}"></p>
+        </div>
+        <div>
+            <label>Chi phí thuê(VNĐ)</label>
+            <input type="text" th:field="*{rentCost}"/>
+            <p style="color: red" th:errors="*{rentCost}"
+               th:if="${#fields.hasErrors('rentCost')}"></p>
+        </div>
+        <div>
+            <label>Số người tối đa</label>
+            <input type="text" th:field="*{maxPeople}"/>
+            <p style="color: red" th:errors="*{maxPeople}"
+               th:if="${#fields.hasErrors('maxPeople')}"></p>
+        </div>
+        <div>
+            <label>Tiêu chuẩn phòng</label>
+            <input type="text" th:field="*{standardRoom}"/>
+            <p style="color: red" th:errors="*{standardRoom}"
+               th:if="${#fields.hasErrors('standardRoom')}"></p>
+        </div>
+        <div>
+            <label>Mô tả tiện nghi khác</label>
+            <input type="text" th:field="*{descriptionOtherConvenience}"/>
+            <p style="color: red" th:errors="*{descriptionOtherConvenience}"
+               th:if="${#fields.hasErrors('descriptionOtherConvenience')}"></p>
+        </div>
+        <div>
+            <label>Diện tích hồ bơi</label>
+            <input type="text" th:field="*{poolArea}"/>
+            <p style="color: red" th:errors="*{poolArea}"
+               th:if="${#fields.hasErrors('poolArea')}"></p>
+        </div>
+        <div>
+            <label>Số tầng</label>
+            <input type="text" th:field="*{numberOfFloors}"/>
+            <p style="color: red" th:errors="*{numberOfFloors}"
+               th:if="${#fields.hasErrors('numberOfFloors')}"></p>
+        </div>
+        <div>
+            <label>Dịch vụ miễn phí đi kèm</label>
+            <input type="text" th:field="*{facilityFree}"/>
+            <p style="color: red" th:errors="*{facilityFree}"
+               th:if="${#fields.hasErrors('facilityFree')}"></p>
+        </div>
+        <div>
+            <label>Loại dịch vụ</label>
+<!--            <select class="test" th:field="*{facilityType}">-->
+<!--                <option th:each="items: ${facilityTypeList}" th:text="${items.facilityTypeName}"-->
+<!--                        th:value="${items.facilityTypeId}"></option>-->
+<!--            </select>-->
+            <select id="service" onchange="myFunction(this.value)" class="form-select form-select-lg mb-3"
+                    aria-label=".form-select-lg example">
+                <option> -- Choose Service --</option>
+                <option value="villa">Villa</option>
+                <option value="room"> Room</option>
+                <option value="house"> House</option>
+            </select>
+        </div>
+        <div>
+            <label>Kiểu thuê </label>
+            <select class="test" th:field="*{rentType}">
+                <option th:each="items: ${rentTypeList}" th:text="${items.rentTypeName}"
+                        th:value="${items.rentTypeId}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/customer/layout :: footer"></footer>
+<script>
+    function myFunction(value) {
+        switch (value) {
+            case "villa":
+                document.getElementById("villa1").style.display = "block";
+                document.getElementById("villa2").style.display = "block";
+                document.getElementById("villa3").style.display = "block";
+                document.getElementById("villa4").style.display = "block";
+                break;
+            case "house":
+                document.getElementById("villa1").style.display = "none";
+                document.getElementById("villa2").style.display = "none";
+                document.getElementById("villa3").style.display = "none";
+                document.getElementById("villa4").style.display = "none";
+                document.getElementById("villa1").style.display = "block";
+                document.getElementById("villa2").style.display = "block";
+                document.getElementById("villa4").style.display = "block";
+                break;
+            case "room":
+                document.getElementById("villa1").style.display = "none";
+                document.getElementById("villa2").style.display = "none";
+                document.getElementById("villa3").style.display = "none";
+                document.getElementById("villa4").style.display = "none";
+                document.getElementById("room").style.display = "block";
+                break;
+            default:
+                document.getElementById("villa1").style.display = "none";
+                document.getElementById("villa2").style.display = "none";
+                document.getElementById("villa3").style.display = "none";
+                document.getElementById("villa4").style.display = "none";
+                document.getElementById("room").style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

@@ -3,11 +3,11 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Customer List</h3>
+<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Facility List</h3>
 <p>
-    <a th:href="@{/customer/create}">
+    <a th:href="@{/facility/create}">
         <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
-        Add new customer
+        Add new facility
     </a>
 </p>
 <p>
@@ -20,47 +20,43 @@
     <thead>
     <tr>
         <th>STT</th>
-        <th>customerName</th>
-        <th>customerBirthday</th>
-        <th>customerGender</th>
-<!--        <th>customerIdCard</th>-->
-<!--        <th>customerPhone</th>-->
-<!--        <th>customerEmail</th>-->
-        <th>customerAddress</th>
-        <th>Customer Type</th>
+        <th>Tên dịch vụ</th>
+        <th>Diện tích sử dụng</th>
+        <th>Chi phí thuê</th>
+        <th>Số người tối đa</th>
+        <th>Loại dịch vụ</th>
+        <th>Kiểu thuê</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="row,rowStat : ${customerList}">
+    <tr th:each="row,rowStat : ${facilityList}">
         <td th:text="${rowStat.count}"></td>
-        <td th:text="${row.customerName}"></td>
-        <td th:text="${row.customerBirthday}"></td>
-        <td th:text="${row.customerGender}"></td>
-<!--        <td th:text="${row.customerIdCard}"></td>-->
-<!--        <td th:text="${row.customerPhone}"></td>-->
-<!--        <td th:text="${row.customerEmail}"></td>-->
-        <td th:text="${row.customerAddress}"></td>
-        <td th:if="${row.customerType}" th:text="${row.customerType.customerTypeName}"></td>
+        <td th:text="${row.facilityName}"></td>
+        <td th:text="${row.facilityArea}"></td>
+        <td th:text="${row.rentCost}"></td>
+        <td th:text="${row.maxPeople}"></td>
+        <td th:text="${row.facilityType.facilityTypeName}"></td>
+        <td th:text="${row.rentType.rentTypeName}"></td>
         <td>
-            <a th:href="@{/customer/{id}/edit(id=${row.customerId})}">
+            <a th:href="@{/facility/{id}/edit(id=${row.facilityId})}">
                 <button class="btn btn-primary btn-outline-secondary btn-sm">
                     <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
-<!--                    <span style="color: blue" class=" text-light h6 m-auto px-2">Edit</span>-->
+                    <!--                    <span style="color: blue" class=" text-light h6 m-auto px-2">Edit</span>-->
                 </button>
             </a>
         </td>
         <td>
-            <a th:href="@{/customer/{id}/delete(id=${row.customerId})}">
+            <a th:href="@{/facility/{id}/delete(id=${row.facilityId})}">
                 <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
                     <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
                 </button>
             </a>
         </td>
         <td>
-            <a th:href="@{/customer/{id}/view(id=${row.customerId})}">
+            <a th:href="@{/facility/{id}/view(id=${row.facilityId})}">
                 <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm">
                     <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2 text-light h6 m-auto px-2"></span>
                 </button>

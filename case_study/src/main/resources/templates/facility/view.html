@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+
+<h3>View Facility</h3>
+<p>
+    <a th:href="@{/facility}">
+        Back to facility list
+    </a>
+</p>
+<div id="form">
+    <form>
+        <div id="detail">
+            <div class="cusdetail">
+                <label>Product Name:</label>
+                <label th:text="${facilityList.facilityName}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Product Price:</label>
+                <label th:text="${facilityList.facilityArea}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Description:</label>
+                <label th:text="${facilityList.rentCost}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.maxPeople}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.standardRoom}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.descriptionOtherConvenience}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.poolArea}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.numberOfFloors}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.facilityFree}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.facilityType}"></label>
+            </div>
+            <div class="cusdetail">
+                <label>Producer:</label>
+                <label th:text="${facilityList.rentType}"></label>
+            </div>
+        </div>
+        <footer th:replace="/facility/layout :: footer"></footer>
+    </form>
+</div>
+</body>
+</html>

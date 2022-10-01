@@ -1,8 +1,8 @@
 package case_study.controller;
 
 import case_study.dto.CustomerDto;
-import case_study.model.Customer;
-import case_study.service.ICustomerService;
+import case_study.model.customer.Customer;
+import case_study.service.customer.ICustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
