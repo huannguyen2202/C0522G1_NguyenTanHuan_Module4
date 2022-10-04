@@ -1,5 +1,6 @@
 package case_study.dto;
 
+import case_study.model.customer.CustomerType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -8,34 +9,23 @@ import javax.validation.constraints.NotBlank;
 
 public class CustomerDto implements Validator {
     private int customerId;
-    @NotBlank
     private String customerName;
-
-    @NotBlank
     private String customerBirthday;
-
-    @NotBlank
     private String customerGender;
-
-    @NotBlank
     private String customerIdCard;
-
-    @NotBlank
     private String customerPhone;
-
-    @NotBlank
-    @Email(message = "Nhap dung dinh dang cua email!")
     private String customerEmail;
-
-    @NotBlank
     private String customerAddress;
+    private CustomerType customerType;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(int customerId, String customerName, String customerBirthday,
-                       String customerGender, String customerIdCard, String customerPhone,
-                       String customerEmail, String customerAddress) {
+    public CustomerDto(int customerId, String customerName,
+                       String customerBirthday, String customerGender,
+                       String customerIdCard, String customerPhone,
+                       String customerEmail, String customerAddress,
+                       CustomerType customerType) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerBirthday = customerBirthday;
@@ -44,6 +34,7 @@ public class CustomerDto implements Validator {
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.customerType = customerType;
     }
 
     public int getCustomerId() {
@@ -108,6 +99,14 @@ public class CustomerDto implements Validator {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     @Override

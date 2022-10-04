@@ -15,6 +15,27 @@
     <form th:action="@{/facility/save}" th:object="${facilityDto}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{facilityId}"/>
+<!--        <div class="form-group">-->
+<!--            <label class="h6" for="facilityType">Loại dịch vụ:</label>-->
+<!--            <p style="color: red" th:if="${#fields.hasErrors('facilityType.facilityTypeId')}"-->
+<!--               th:errors="*{facilityType.facilityTypeId}"></p>-->
+<!--            <div class="input-group">-->
+<!--                <select id="facilityType" class="form-control" th:field="*{facilityType.facilityTypeId}"-->
+<!--                        onchange="changeForm(this)">-->
+<!--                    <option th:value="${''}" class="text-danger">Chọn loại dịch vụ..</option>-->
+<!--                    <option th:each="item : ${facilityTypeList}" th:value="${item.facilityTypeId}"-->
+<!--                            th:text="${item.facilityTypeName}"></option>-->
+<!--                </select>-->
+<!--                <span class="input-group-text"><i class="fa-solid fa-house-user"></i></span>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div>
+            <label>Loại dịch vụ</label>
+            <select class="form-control" th:field="*{facilityType}" onchange="changeForm(this)">
+                <option th:each="item: ${facilityTypeList}" th:text="${item.facilityTypeName}" th:value="${item.facilityTypeId}"></option>
+            </select>
+
+        </div>
         <div>
             <label>Tên Dịch Vụ</label>
             <input type="text" th:field="*{facilityName}"/>
@@ -70,20 +91,6 @@
                th:if="${#fields.hasErrors('facilityFree')}"></p>
         </div>
         <div>
-            <label>Loại dịch vụ</label>
-<!--            <select class="test" th:field="*{facilityType}">-->
-<!--                <option th:each="items: ${facilityTypeList}" th:text="${items.facilityTypeName}"-->
-<!--                        th:value="${items.facilityTypeId}"></option>-->
-<!--            </select>-->
-            <select id="service" onchange="myFunction(this.value)" class="form-select form-select-lg mb-3"
-                    aria-label=".form-select-lg example">
-                <option> -- Choose Service --</option>
-                <option value="villa">Villa</option>
-                <option value="room"> Room</option>
-                <option value="house"> House</option>
-            </select>
-        </div>
-        <div>
             <label>Kiểu thuê </label>
             <select class="test" th:field="*{rentType}">
                 <option th:each="items: ${rentTypeList}" th:text="${items.rentTypeName}"
@@ -95,36 +102,36 @@
 </div>
 <footer th:replace="/customer/layout :: footer"></footer>
 <script>
-    function myFunction(value) {
-        switch (value) {
-            case "villa":
-                document.getElementById("villa1").style.display = "block";
-                document.getElementById("villa2").style.display = "block";
-                document.getElementById("villa3").style.display = "block";
-                document.getElementById("villa4").style.display = "block";
+    function changeForm(type) {
+        let selectType = type.value;
+        switch (selectType) {
+            case "1":
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("descriptionOtherConvenience").style.display = "block";
+                document.getElementById("poolArea").style.display = "block";
+                document.getElementById("numberOfFloors").style.display = "block";
+                document.getElementById("facilityFree").style.display = "none";
                 break;
-            case "house":
-                document.getElementById("villa1").style.display = "none";
-                document.getElementById("villa2").style.display = "none";
-                document.getElementById("villa3").style.display = "none";
-                document.getElementById("villa4").style.display = "none";
-                document.getElementById("villa1").style.display = "block";
-                document.getElementById("villa2").style.display = "block";
-                document.getElementById("villa4").style.display = "block";
+            case "2":
+                document.getElementById("standardRoom").style.display = "block";
+                document.getElementById("descriptionOtherConvenience").style.display = "block";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "block";
+                document.getElementById("facilityFree").style.display = "none";
                 break;
-            case "room":
-                document.getElementById("villa1").style.display = "none";
-                document.getElementById("villa2").style.display = "none";
-                document.getElementById("villa3").style.display = "none";
-                document.getElementById("villa4").style.display = "none";
-                document.getElementById("room").style.display = "block";
-                break;
+            case "3":
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("descriptionOtherConvenience").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "none";
+                document.getElementById("facilityFree").style.display = "block";
+                break
             default:
-                document.getElementById("villa1").style.display = "none";
-                document.getElementById("villa2").style.display = "none";
-                document.getElementById("villa3").style.display = "none";
-                document.getElementById("villa4").style.display = "none";
-                document.getElementById("room").style.display = "none";
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("descriptionOtherConvenience").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "none";
+                document.getElementById("facilityFree").style.display = "none";
         }
     }
 </script>

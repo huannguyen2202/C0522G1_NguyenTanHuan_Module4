@@ -3,7 +3,7 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Customer List</h3>
+<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Customer List</h3>
 <p>
     <a th:href="@{/customer/create}">
         <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
@@ -16,6 +16,23 @@
         Back Home
     </a>
 </p>
+<!--<form class="d-flex" role="search" action="" method="get">-->
+<!--    <input  type="search" placeholder="Search name" aria-label="Search" name="name">-->
+<!--    <input  type="search" placeholder="Search phone" aria-label="Search" name="phone">-->
+<!--    <input  type="search" placeholder="Search address" aria-label="Search" name="address">-->
+<!--    <button  type="submit" style="background: chartreuse">Search</button>-->
+<!--</form><br>-->
+<form class="d-flex my-2" role="search" action="" method="get" style="margin-left: 900px">
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Name" aria-label="Search"
+           name="name">
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Phone" aria-label="Search"
+           name="phone">
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Address" aria-label="Search"
+           name="address">
+    <button style="background-color: #45a049" class="btn btn-outline-success" type="submit" name="action" value="search">
+        <i class="fa-solid fa-magnifying-glass text-light"></i></button>
+</form>
+
 <table id="customers">
     <thead>
     <tr>
@@ -23,9 +40,6 @@
         <th>customerName</th>
         <th>customerBirthday</th>
         <th>customerGender</th>
-<!--        <th>customerIdCard</th>-->
-<!--        <th>customerPhone</th>-->
-<!--        <th>customerEmail</th>-->
         <th>customerAddress</th>
         <th>Customer Type</th>
         <th>Edit</th>
@@ -39,36 +53,66 @@
         <td th:text="${row.customerName}"></td>
         <td th:text="${row.customerBirthday}"></td>
         <td th:text="${row.customerGender}"></td>
-<!--        <td th:text="${row.customerIdCard}"></td>-->
-<!--        <td th:text="${row.customerPhone}"></td>-->
-<!--        <td th:text="${row.customerEmail}"></td>-->
         <td th:text="${row.customerAddress}"></td>
         <td th:if="${row.customerType}" th:text="${row.customerType.customerTypeName}"></td>
         <td>
             <a th:href="@{/customer/{id}/edit(id=${row.customerId})}">
                 <button class="btn btn-primary btn-outline-secondary btn-sm">
                     <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
-<!--                    <span style="color: blue" class=" text-light h6 m-auto px-2">Edit</span>-->
                 </button>
             </a>
         </td>
         <td>
-            <a th:href="@{/customer/{id}/delete(id=${row.customerId})}">
-                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
-                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
-                </button>
-            </a>
+            <button th:attr="onclick=|customerDelete('${row.customerId}', '${row.customerName}')|"
+                    class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#deleteCustomer">
+                <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
+            </button>
         </td>
         <td>
             <a th:href="@{/customer/{id}/view(id=${row.customerId})}">
                 <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm">
-                    <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2 text-light h6 m-auto px-2"></span>
+                    <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2"></span>
                 </button>
             </a>
         </td>
     </tr>
     </tbody>
 </table>
+<div>
+    <a th:href="@{'/customer'(page=${customerList.number - 1},name=${name})}" th:if="${customerList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
+    <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
+    <a th:href="@{'/customer'(page=${customerList.number + 1},name=${name})}" th:if="${customerList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+</div>
+<div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn xóa?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/customer/delete}" method="GET">
+                <div class="modal-body">
+                    <span class="h6">Khách hàng:</span><strong id="nameDelete" class="text-danger ps-2"></strong>
+                    <input type="hidden" name="idDelete" id="idDelete" readonly/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger" value="delete">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function customerDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+        debugger
+    }
+</script>
 <!--<footer th:replace="/layout :: footer"></footer>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

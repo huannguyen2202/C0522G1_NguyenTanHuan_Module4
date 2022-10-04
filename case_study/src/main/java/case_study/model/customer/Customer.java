@@ -15,6 +15,7 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+    private boolean deleteStatus;
     @ManyToOne
     @JoinColumn(name = "customer_type_id", referencedColumnName = "customerTypeId")
     private CustomerType customerType;
@@ -24,7 +25,8 @@ public class Customer {
 
     public Customer(int customerId, String customerName, String customerBirthday,
                     String customerGender, String customerIdCard, String customerPhone,
-                    String customerEmail, String customerAddress, CustomerType customerType) {
+                    String customerEmail, String customerAddress, boolean deleteStatus,
+                    CustomerType customerType) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerBirthday = customerBirthday;
@@ -33,6 +35,7 @@ public class Customer {
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.deleteStatus = deleteStatus;
         this.customerType = customerType;
     }
 
@@ -98,6 +101,14 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public boolean isDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     public CustomerType getCustomerType() {

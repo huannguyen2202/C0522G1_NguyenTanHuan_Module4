@@ -14,7 +14,7 @@ public class CustomerType {
     private int customerTypeId;
     private String customerTypeName;
 
-    @OneToMany(mappedBy = "customerType",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customerType")
     private Set<Customer> customers;
 
     public CustomerType() {

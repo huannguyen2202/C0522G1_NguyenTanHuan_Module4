@@ -1,1 +1,0 @@
-SELECT * FROM c05_case_study.facility;

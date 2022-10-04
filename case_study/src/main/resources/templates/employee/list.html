@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Employee List</h3>
+<p>
+    <a th:href="@{/employee/create}">
+        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
+        Add new employee
+    </a>
+</p>
+<p>
+    <a th:href="@{/}">
+        <i class="fa-solid fa-house-chimney h5 mx-1"></i>
+        Back Home
+    </a>
+</p>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>employeeName</th>
+        <th>employeeBirthday</th>
+        <th>employeeAddress</th>
+        <th>division</th>
+        <th>educationDegree</th>
+        <th>position</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${employeeList}">
+        <td th:text="${rowStat.count}"></td>
+        <td th:text="${row.employeeName}"></td>
+        <td th:text="${row.employeeBirthday}"></td>
+        <td th:text="${row.employeeAddress}"></td>
+        <td th:text="${row.division.divisionName}"></td>
+        <td th:text="${row.educationDegree.educationDegreeName}"></td>
+        <td th:text="${row.position.positionName}"></td>
+        <td>
+            <a th:href="@{/employee/{id}/edit(id=${row.employeeId})}">
+                <button class="btn btn-primary btn-outline-secondary btn-sm">
+                    <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
+                    <!--                    <span style="color: blue" class=" text-light h6 m-auto px-2">Edit</span>-->
+                </button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/employee/{id}/delete(id=${row.employeeId})}">
+                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
+                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
+                </button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/employee/{id}/view(id=${row.employeeId})}">
+                <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm">
+                    <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2 text-light h6 m-auto px-2"></span>
+                </button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!--<footer th:replace="/layout :: footer"></footer>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

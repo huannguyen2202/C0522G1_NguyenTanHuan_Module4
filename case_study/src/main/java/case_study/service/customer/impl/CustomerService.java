@@ -4,6 +4,8 @@ import case_study.model.customer.Customer;
 import case_study.repository.customer.ICustomerRepository;
 import case_study.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +27,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(int id) {
-        return iCustomerRepository.findById(id);
+        return iCustomerRepository.findById(id).get();
     }
 
     @Override
@@ -35,6 +37,11 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void remove(int id) {
-        iCustomerRepository.delete(findById(id));
+        iCustomerRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Customer> findByName(String name,String phone,String address,Pageable pageable) {
+        return iCustomerRepository.searchByName(name,phone,address,pageable);
     }
 }

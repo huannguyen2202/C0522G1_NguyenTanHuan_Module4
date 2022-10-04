@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/customer/layout :: head"></head>
+<head th:replace="/layout :: head">
+
+</head>
 <body>
-<h3>Edit Customer</h3>
-<p>
+<h3 style="text-align: center">Edit Customer</h3>
+<p style="text-align: center">
     <a th:href="@{/customer}">
         Back to customer list
     </a>
@@ -24,11 +26,32 @@
             <p style="color: red" th:errors="*{customerBirthday}"
                th:if="${#fields.hasErrors('customerBirthday')}"></p>
         </div>
+<!--        <div>-->
+<!--            <label>Customer Gender</label>-->
+<!--            <input type="text" th:field="*{customerGender}"/>-->
+<!--            <p style="color: red" th:errors="*{customerGender}"-->
+<!--               th:if="${#fields.hasErrors('customerGender')}"></p>-->
+<!--        </div>-->
         <div>
-            <label>Customer Gender</label>
-            <input type="text" th:field="*{customerGender}"/>
-            <p style="color: red" th:errors="*{customerGender}"
-               th:if="${#fields.hasErrors('customerGender')}"></p>
+            <label class="h6">Customer Gender:</label>
+            <p style="color: red" th:if="${#fields.hasErrors('customerGender')}"
+               th:errors="*{customerGender}"></p>
+            <div class="d-flex">
+                <label class="d-block me-4">
+                    <input type="radio" th:field="*{customerGender}" th:value="0"/> Nam
+                    <i class="fa-solid fa-mars"></i>
+                </label>
+
+                <label class="d-block me-4">
+                    <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
+                    <i class="fa-solid fa-venus"></i>
+                </label>
+
+                <label class="d-block">
+                    <input type="radio" th:field="*{customerGender}" th:value="2"/> LGBT
+                    <i class="fa-solid fa-heart"></i>
+                </label>
+            </div>
         </div>
         <div>
             <label>Customer IdCard</label>
@@ -53,6 +76,13 @@
             <input type="text" th:field="*{customerAddress}"/>
             <p style="color: red" th:errors="*{customerAddress}"
                th:if="${#fields.hasErrors('customerAddress')}"></p>
+        </div>
+        <div>
+            <label>Customer Type </label>
+            <select class="test" th:field="*{customerType}">
+                <option th:each="items: ${customerTypeList}" th:text="${items.customerTypeName}"
+                        th:value="${items.customerTypeId}"></option>
+            </select>
         </div>
         <input type="submit" value="Edit"/>
     </form>

@@ -1,0 +1,1 @@
+SELECT * FROM c05_case_study.rent_type;

@@ -106,6 +106,7 @@
             border-radius: 5px;
             background-color: #f2f2f2;
             padding: 20px;
+            box-shadow: #CDCDCD;
         }
 
         /*.notify span {*/
@@ -135,10 +136,10 @@
 <div class="container-fluid">
     <footer th:fragment="head">
     <!--    hàng 1-->
-    <div style="background-color: lightblue" class="row">
+    <div style="background-color: #f2f2f2; border: 1px solid cornflowerblue" class="row">
         <div class="col-sm-3 col-lg-3 col-md-3 head">
-            <img src="https://furamavietnam.com/wp-content/uploads/2018/10/logo.png" width="80px" height="80px"
-                 style="margin-top: 15px;margin-left: 100px">
+            <img src="https://www.furama.com/images/LOGOFurama_4C_Normal.png" width="280px" height="80px"
+                 style="margin-top: 25px;margin-left: 40px">
         </div>
         <div class="col-sm-3 col-lg-3 col-md-3 head">
         </div>
@@ -172,7 +173,7 @@
                                aria-expanded="false">Employee</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/employee">Employee list</a></li>
-                                <li><a class="dropdown-item" href="/employee?action=create">Add new Employee</a></li>
+                                <li><a class="dropdown-item" href="/employee/create">Add new Employee</a></li>
                             </ul>
                         </li>
 
