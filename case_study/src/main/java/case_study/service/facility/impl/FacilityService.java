@@ -4,6 +4,8 @@ import case_study.model.facility.Facility;
 import case_study.repository.facility.IFacilityRepository;
 import case_study.service.facility.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +27,8 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public Facility findById(int id) {
-        return iFacilityRepository.findById(id);
+
+        return iFacilityRepository.findById(id).get();
     }
 
     @Override
@@ -35,6 +38,13 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void remove(int id) {
-        iFacilityRepository.delete(findById(id));
+        iFacilityRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Facility> findByName(String name, Pageable pageable) {
+        return iFacilityRepository.searchByName(name,pageable);
+    }
+
+
 }

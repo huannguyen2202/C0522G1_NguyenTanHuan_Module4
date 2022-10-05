@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/customer/layout :: head"></head>
-<body>
+<head th:replace="/layout :: head">
 
-<h3>View Customer</h3>
-<p>
+</head>
+<body>
+<div style="background-image: url(https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-powerpoint-don-gian-dep-59_045409561.jpg)" th:width="700px">
+<h3 style="text-align: center; font-family: Algerian; color: blue; font-size: 40px">View Customer</h3>
+<p style="text-align: center">
+    <i style="color: blue" class="fa-sharp fa-solid fa-backward"></i>
     <a th:href="@{/customer}">
         Back to customer list
     </a>
 </p>
-<div id="form">
-    <form>
+<div id="form" style="background-image: url(https://tophinhanhdep.com/wp-content/uploads/2021/11/Pastel-Ombre-Wallpapers.jpg)">
+    <form style="margin: auto">
         <div id="detail">
             <div class="cusdetail">
-                <label>Product Name:</label>
+                <label><b>Customer Name:</b></label><br>
                 <label th:text="${customerList.customerName}"></label>
-            </div>
+            </div><br>
             <div class="cusdetail">
-                <label>Product Price:</label>
+                <label><b>Customer Birthday:</b></label><br>
                 <label th:text="${customerList.customerBirthday}"></label>
-            </div>
+            </div><br>
             <div class="cusdetail">
-                <label>Description:</label>
+                <label><b>Customer Gender:</b></label><br>
                 <label th:text="${customerList.customerGender}"></label>
-            </div>
+            </div><br>
             <div class="cusdetail">
-                <label>Producer:</label>
+                <label><b>Customer IdCard:</b></label><br>
                 <label th:text="${customerList.customerIdCard}"></label>
-            </div>
+            </div><br>
             <div class="cusdetail">
-                <label>Producer:</label>
+                <label><b>Customer Phone:</b></label><br>
                 <label th:text="${customerList.customerPhone}"></label>
-            </div>
+            </div><br>
             <div class="cusdetail">
-                <label>Producer:</label>
-                <label th:text="${customerList.customerPhone}"></label>
-            </div>
+                <label><b>Customer Email:</b></label><br>
+                <label th:text="${customerList.customerEmail}"></label>
+            </div><br>
             <div class="cusdetail">
-                <label>Producer:</label>
-                <label th:text="${customerList.customerPhone}"></label>
+                <label><b>Customer Address:</b></label><br>
+                <label th:text="${customerList.customerAddress}"></label>
             </div>
         </div>
         <footer th:replace="/customer/layout :: footer"></footer>
     </form>
+</div>
 </div>
 </body>
 </html>

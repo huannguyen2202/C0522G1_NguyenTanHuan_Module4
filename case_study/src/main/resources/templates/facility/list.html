@@ -3,7 +3,7 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Facility List</h3>
+<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Facility List</h3>
 <p>
     <a th:href="@{/facility/create}">
         <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
@@ -16,6 +16,12 @@
         Back Home
     </a>
 </p>
+<form class="d-flex my-2" role="search" action="" method="get" style="margin-left: 1200px">
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Name" aria-label="Search"
+           name="name">
+    <button style="background-color: #45a049" class="btn btn-outline-success" type="submit" name="action" value="search">
+        <i class="fa-solid fa-magnifying-glass text-light"></i></button>
+</form>
 <table id="customers">
     <thead>
     <tr>
@@ -49,11 +55,11 @@
             </a>
         </td>
         <td>
-            <a th:href="@{/facility/{id}/delete(id=${row.facilityId})}">
-                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
-                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
-                </button>
-            </a>
+            <button th:attr="onclick=|facilityDelete('${row.facilityId}', '${row.facilityName}')|"
+                    class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#deleteFacility">
+                <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
+            </button>
         </td>
         <td>
             <a th:href="@{/facility/{id}/view(id=${row.facilityId})}">
@@ -65,6 +71,40 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <a th:href="@{'/facility'(page=${facilityList.number - 1},name=${name})}" th:if="${facilityList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
+    <span th:text="${facilityList.number + 1}"></span>/<span th:text="${facilityList.totalPages}"></span>
+    <a th:href="@{'/facility'(page=${facilityList.number + 1},name=${name})}" th:if="${facilityList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+</div>
+<div class="modal fade" id="deleteFacility" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn xóa?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/facility/delete}" method="GET">
+                <div class="modal-body">
+                    <span class="h6">Dịch vụ:</span><strong id="nameDelete" class="text-danger ps-2"></strong>
+                    <input type="hidden" name="idDelete" id="idDelete" readonly/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger" value="delete">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function facilityDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+        debugger
+    }
+</script>
 <!--<footer th:replace="/layout :: footer"></footer>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

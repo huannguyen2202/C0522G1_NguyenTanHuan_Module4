@@ -4,13 +4,15 @@
 
 </head>
 <body>
-<h3 style="text-align: center">Edit Customer</h3>
+<div style="background-image: url(https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-powerpoint-don-gian-dep-59_045409561.jpg)">
+<h3 style="text-align: center; font-family: Algerian; color: blue; font-size: 40px">Edit Customer</h3>
 <p style="text-align: center">
+    <i style="color: blue" class="fa-sharp fa-solid fa-backward"></i>
     <a th:href="@{/customer}">
         Back to customer list
     </a>
 </p>
-<div id="form">
+<div id="form" style="background-image: url(https://tophinhanhdep.com/wp-content/uploads/2021/11/Pastel-Ombre-Wallpapers.jpg)">
     <form action="#" th:action="@{/customer/update}" th:object="${customerDto}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{customerId}"/>
@@ -45,11 +47,6 @@
                 <label class="d-block me-4">
                     <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
                     <i class="fa-solid fa-venus"></i>
-                </label>
-
-                <label class="d-block">
-                    <input type="radio" th:field="*{customerGender}" th:value="2"/> LGBT
-                    <i class="fa-solid fa-heart"></i>
                 </label>
             </div>
         </div>
@@ -88,5 +85,6 @@
     </form>
 </div>
 <footer th:replace="/customer/layout :: footer"></footer>
+</div>
 </body>
 </html>

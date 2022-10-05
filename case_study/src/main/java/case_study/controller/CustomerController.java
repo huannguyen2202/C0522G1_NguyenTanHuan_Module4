@@ -34,7 +34,7 @@ public class CustomerController {
     public String search(@RequestParam(defaultValue = "") String name,
                          @RequestParam(defaultValue = "") String phone,
                          @RequestParam(defaultValue = "") String address,
-                         @PageableDefault(value = 3) Pageable pageable, Model model) {
+                         @PageableDefault(value = 5) Pageable pageable, Model model) {
         model.addAttribute("customerList", iCustomerService.findByName(name, phone, address, pageable));
         model.addAttribute("name", name);
         model.addAttribute("phone", phone);

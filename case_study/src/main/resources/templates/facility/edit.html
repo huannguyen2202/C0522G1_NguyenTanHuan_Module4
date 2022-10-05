@@ -3,13 +3,15 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="text-align: center">Edit Facility</h3>
-<p>
+<div style="background-image: url(https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-powerpoint-don-gian-dep-59_045409561.jpg)">
+<h3 style="text-align: center; font-family: Algerian; color: blue; font-size: 40px">Edit Facility</h3>
+<p style="text-align: center">
+    <i style="color: blue" class="fa-sharp fa-solid fa-backward"></i>
     <a th:href="@{/facility}" style="text-align: center">
         Back to facility list
     </a>
 </p>
-<div id="form">
+<div id="form" style="background-image: url(https://tophinhanhdep.com/wp-content/uploads/2021/11/Pastel-Ombre-Wallpapers.jpg)">
     <form action="#" th:action="@{/facility/update}" th:object="${facilityDto}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{facilityId}"/>
@@ -83,5 +85,6 @@
     </form>
 </div>
 <footer th:replace="/customer/layout :: footer"></footer>
+</div>
 </body>
 </html>
