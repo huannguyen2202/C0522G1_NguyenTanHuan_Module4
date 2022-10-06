@@ -3,38 +3,39 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Customer List</h3>
-<p>
-    <a th:href="@{/customer/create}">
-        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
-        Add new customer
-    </a>
-</p>
-<p>
-    <a th:href="@{/}">
-        <i class="fa-solid fa-house-chimney h5 mx-1"></i>
-        Back Home
-    </a>
-</p>
+<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center; text-shadow: 0em 0em 0em #ffffff,
+                0.08em 0.08em 0em #aaaaaa">Customer List</h3><br>
+<!--<p>-->
+<!--    <a th:href="@{/customer/create}">-->
+<!--        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>-->
+<!--        Add new customer-->
+<!--    </a>-->
+<!--</p>-->
+<!--<p>-->
+<!--    <a th:href="@{/}">-->
+<!--        <i class="fa-solid fa-house-chimney h5 mx-1"></i>-->
+<!--        Back Home-->
+<!--    </a>-->
+<!--</p>-->
 <form class="d-flex my-2" role="search" action="" method="get" style="margin-left: 900px">
-    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Name" aria-label="Search"
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2 shadow" type="search" placeholder="Input search Name" aria-label="Search"
            name="name">
-    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Phone" aria-label="Search"
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2 shadow" type="search" placeholder="Input search Phone" aria-label="Search"
            name="phone">
-    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Address" aria-label="Search"
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2 shadow" type="search" placeholder="Input search Address" aria-label="Search"
            name="address">
-    <button style="background-color: #45a049" class="btn btn-outline-success" type="submit" name="action" value="search">
+    <button style="background-color: #45a049" class="btn btn-outline-success shadow" type="submit" name="action" value="search">
         <i class="fa-solid fa-magnifying-glass text-light"></i></button>
 </form>
 
 <table id="customers">
     <thead>
     <tr>
-        <th>STT</th>
-        <th>customerName</th>
-        <th>customerBirthday</th>
-        <th>customerGender</th>
-        <th>customerAddress</th>
+        <th>Serial</th>
+        <th>Customer Name</th>
+        <th>Customer Birthday</th>
+        <th>Customer Gender</th>
+        <th>Customer Address</th>
         <th>Customer Type</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -43,29 +44,31 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${customerList}">
-        <td th:text="${rowStat.count}"></td>
+        <td th:text="${customerList.number*customerList.size+rowStat.count}"></td>
         <td th:text="${row.customerName}"></td>
         <td th:text="${row.customerBirthday}"></td>
-        <td th:text="${row.customerGender}"></td>
+<!--        <td th:text="${row.customerGender}"></td>-->
+        <td th:if="${row.customerGender}" th:text="Male"></td>
+        <td th:unless="${row.customerGender}" th:text="Female"></td>
         <td th:text="${row.customerAddress}"></td>
         <td th:if="${row.customerType}" th:text="${row.customerType.customerTypeName}"></td>
         <td>
             <a th:href="@{/customer/{id}/edit(id=${row.customerId})}">
-                <button class="btn btn-primary btn-outline-secondary btn-sm">
+                <button class="btn btn-primary btn-outline-secondary btn-sm shadow">
                     <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
                 </button>
             </a>
         </td>
         <td>
             <button th:attr="onclick=|customerDelete('${row.customerId}', '${row.customerName}')|"
-                    class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                    class="btn btn-danger btn-outline-secondary btn-sm shadow" data-bs-toggle="modal"
                     data-bs-target="#deleteCustomer">
                 <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
             </button>
         </td>
         <td>
             <a th:href="@{/customer/{id}/view(id=${row.customerId})}">
-                <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm">
+                <button style="background-color: orangered" class="btn btn-outline-secondary btn-sm shadow">
                     <span class="fa-solid fa-users-viewfinder text-light h6 m-auto px-2"></span>
                 </button>
             </a>
@@ -73,11 +76,38 @@
     </tr>
     </tbody>
 </table>
-<div>
-    <a th:href="@{'/customer'(page=${customerList.number - 1},name=${name})}" th:if="${customerList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
-    <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
-    <a th:href="@{'/customer'(page=${customerList.number + 1},name=${name})}" th:if="${customerList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+
+<div style="margin-left: 46%; margin-top: 10px">
+    <ul class="pagination">
+
+        <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number - 1},name=${name})}"
+                                 th:if="${customerList.hasPrevious()}">Previous</a></li>
+        <li class="page-item"><a class="page-link" th:if="${customerList.hasPrevious()}"
+                                 th:href="@{'/customer'(page=${customerList.number - 1},name=${name})}"
+                                 th:text="${customerList.number }"></a>
+        </li>
+
+        <li class="page-item active">
+            <a class="page-link" th:text="${customerList.number + 1}"
+               th:href="@{'/customer'(page=${customerList.number},name=${name})}">
+                <span class="sr-only"></span></a>
+        </li>
+
+        <li class="page-item"><a class="page-link" th:if="${customerList.hasNext()}"
+                                 th:href="@{'/customer'(page=${customerList.number + 1},name=${name})}"
+                                 th:text="${customerList.number + 2}"></a>
+        </li>
+        <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1},name=${name})}"
+                                 th:if="${customerList.hasNext()}">Next</a></li>
+
+    </ul>
 </div>
+
+<!--<div>-->
+<!--    <a th:href="@{'/customer'(page=${customerList.number - 1},name=${name})}" th:if="${customerList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>-->
+<!--    <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>-->
+<!--    <a th:href="@{'/customer'(page=${customerList.number + 1},name=${name})}" th:if="${customerList.hasNext()}"><i class="fa-solid fa-forward"></i></a>-->
+<!--</div>-->
 <div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"
      aria-hidden="true">
     <div class="modal-dialog">

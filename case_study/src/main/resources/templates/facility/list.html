@@ -3,19 +3,19 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Facility List</h3>
-<p>
-    <a th:href="@{/facility/create}">
-        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
-        Add new facility
-    </a>
-</p>
-<p>
-    <a th:href="@{/}">
-        <i class="fa-solid fa-house-chimney h5 mx-1"></i>
-        Back Home
-    </a>
-</p>
+<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Facility List</h3><br>
+<!--<p>-->
+<!--    <a th:href="@{/facility/create}">-->
+<!--        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>-->
+<!--        Add new facility-->
+<!--    </a>-->
+<!--</p>-->
+<!--<p>-->
+<!--    <a th:href="@{/}">-->
+<!--        <i class="fa-solid fa-house-chimney h5 mx-1"></i>-->
+<!--        Back Home-->
+<!--    </a>-->
+<!--</p>-->
 <form class="d-flex my-2" role="search" action="" method="get" style="margin-left: 1200px">
     <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Name" aria-label="Search"
            name="name">
@@ -25,13 +25,13 @@
 <table id="customers">
     <thead>
     <tr>
-        <th>STT</th>
-        <th>Tên dịch vụ</th>
-        <th>Diện tích sử dụng</th>
-        <th>Chi phí thuê</th>
-        <th>Số người tối đa</th>
-        <th>Loại dịch vụ</th>
-        <th>Kiểu thuê</th>
+        <th>Serial</th>
+        <th>Facility Name</th>
+        <th>Facility Area</th>
+        <th>Rent Cost</th>
+        <th>Max People</th>
+        <th>Facility Type Name</th>
+        <th>Rent Type Name</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>

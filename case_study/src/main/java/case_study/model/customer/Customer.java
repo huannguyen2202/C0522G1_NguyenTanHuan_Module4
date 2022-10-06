@@ -10,7 +10,7 @@ public class Customer {
     private int customerId;
     private String customerName;
     private String customerBirthday;
-    private String customerGender;
+    private boolean customerGender;
     private String customerIdCard;
     private String customerPhone;
     private String customerEmail;
@@ -23,21 +23,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, String customerName, String customerBirthday,
-                    String customerGender, String customerIdCard, String customerPhone,
-                    String customerEmail, String customerAddress, boolean deleteStatus,
-                    CustomerType customerType) {
-        this.customerId = customerId;
-        this.customerName = customerName;
-        this.customerBirthday = customerBirthday;
-        this.customerGender = customerGender;
-        this.customerIdCard = customerIdCard;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-        this.deleteStatus = deleteStatus;
-        this.customerType = customerType;
-    }
+
 
     public int getCustomerId() {
         return customerId;
@@ -63,11 +49,11 @@ public class Customer {
         this.customerBirthday = customerBirthday;
     }
 
-    public String getCustomerGender() {
+    public boolean isCustomerGender() {
         return customerGender;
     }
 
-    public void setCustomerGender(String customerGender) {
+    public void setCustomerGender(boolean customerGender) {
         this.customerGender = customerGender;
     }
 

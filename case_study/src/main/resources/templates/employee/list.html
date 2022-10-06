@@ -3,29 +3,40 @@
 <head th:replace="/layout :: head">
 </head>
 <body>
-<h3 style="color: blue;font-family: UTM Flamenco;font-size: 50px; text-align: center">Employee List</h3>
+<h3 style="color: blue;font-family:Algerian;font-size: 40px; text-align: center">Employee List</h3><br>
 <p>
-    <a th:href="@{/employee/create}">
-        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>
-        Add new employee
-    </a>
+<!--    <a th:href="@{/employee/create}">-->
+<!--        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"></span>-->
+<!--        Add new employee-->
+<!--    </a>-->
+    <button
+            class="btn btn-danger btn-outline-light btn-sm" data-bs-toggle="modal"
+            data-bs-target="#createEmployee">
+        <span class="fa-solid fa-file-circle-plus h5 my-auto me-1"> Add new employee</span>
+    </button>
 </p>
-<p>
-    <a th:href="@{/}">
-        <i class="fa-solid fa-house-chimney h5 mx-1"></i>
-        Back Home
-    </a>
-</p>
+<!--<p>-->
+<!--    <a th:href="@{/}">-->
+<!--        <i class="fa-solid fa-house-chimney h5 mx-1"></i>-->
+<!--        Back Home-->
+<!--    </a>-->
+<!--</p>-->
+<form class="d-flex my-2" role="search" action="" method="get" style="margin-left: 1200px">
+    <input style="background-color: #f2f2f2; border: 1px solid olivedrab" class="form-control me-2" type="search" placeholder="Input search Name" aria-label="Search"
+           name="name">
+    <button style="background-color: #45a049" class="btn btn-outline-success" type="submit" name="action" value="search">
+        <i class="fa-solid fa-magnifying-glass text-light"></i></button>
+</form>
 <table id="customers">
     <thead>
     <tr>
-        <th>STT</th>
-        <th>employeeName</th>
-        <th>employeeBirthday</th>
-        <th>employeeAddress</th>
-        <th>division</th>
-        <th>educationDegree</th>
-        <th>position</th>
+        <th>Serial</th>
+        <th>Employee Name</th>
+        <th>Employee Birthday</th>
+        <th>Employee Address</th>
+        <th>Division</th>
+        <th>Education Degree</th>
+        <th>Position</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
@@ -48,12 +59,19 @@
                 </button>
             </a>
         </td>
+<!--        <td>-->
+<!--            <a th:href="@{/employee/{id}/delete(id=${row.employeeId})}">-->
+<!--                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">-->
+<!--                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>-->
+<!--                </button>-->
+<!--            </a>-->
+<!--        </td>-->
         <td>
-            <a th:href="@{/employee/{id}/delete(id=${row.employeeId})}">
-                <button style="background-color: red" class="btn  btn-outline-secondary btn-sm">
-                    <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
-                </button>
-            </a>
+            <button th:attr="onclick=|employeeDelete('${row.employeeId}', '${row.employeeName}')|"
+                    class="btn btn-danger btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#deleteEmployee">
+                <span class="fa-solid fa-trash-can text-light h6 m-auto px-2"></span>
+            </button>
         </td>
         <td>
             <a th:href="@{/employee/{id}/view(id=${row.employeeId})}">
@@ -65,6 +83,126 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <a th:href="@{'/employee'(page=${employeeList.number - 1},name=${name})}" th:if="${employeeList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
+    <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
+    <a th:href="@{'/employee'(page=${employeeList.number + 1},name=${name})}" th:if="${employeeList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+</div>
+<div class="modal fade" id="createEmployee" tabindex="-1" aria-labelledby="exampleModalLabel2"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel2">Add employee</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/employee/save}" th:object="${employeeDto}"
+                  method="POST" novalidate="novalidate">
+                <div class="modal-body">
+                    <input type="hidden" th:field="*{employeeId}"/>
+                    <div>
+                        <label>Employee Name</label>
+                        <input type="text" th:field="*{employeeName}"/>
+                        <p style="color: red" th:errors="*{employeeName}"
+                           th:if="${#fields.hasErrors('employeeName')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee Birthday</label>
+                        <input type="date" th:field="*{employeeBirthday}"/>
+                        <p style="color: red" th:errors="*{employeeBirthday}"
+                           th:if="${#fields.hasErrors('employeeBirthday')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee IdCard</label>
+                        <input type="text" th:field="*{employeeIdCard}"/>
+                        <p style="color: red" th:errors="*{employeeIdCard}"
+                           th:if="${#fields.hasErrors('employeeIdCard')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee Salary</label>
+                        <input type="text" th:field="*{employeeSalary}"/>
+                        <p style="color: red" th:errors="*{employeeSalary}"
+                           th:if="${#fields.hasErrors('employeeSalary')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee Phone</label>
+                        <input type="text" th:field="*{employeePhone}"/>
+                        <p style="color: red" th:errors="*{employeePhone}"
+                           th:if="${#fields.hasErrors('employeePhone')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee Email</label>
+                        <input type="text" th:field="*{employeeEmail}"/>
+                        <p style="color: red" th:errors="*{employeeEmail}"
+                           th:if="${#fields.hasErrors('employeeEmail')}"></p>
+                    </div>
+                    <div>
+                        <label>Employee Address</label>
+                        <input type="text" th:field="*{employeeAddress}"/>
+                        <p style="color: red" th:errors="*{employeeAddress}"
+                           th:if="${#fields.hasErrors('employeeAddress')}"></p>
+                    </div>
+                    <div>
+                        <label>Division</label>
+                        <select class="test" th:field="*{division}">
+                            <option th:each="items: ${divisionList}" th:text="${items.divisionName}"
+                                    th:value="${items.divisionId}"></option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Education Degree</label>
+                        <select class="test" th:field="*{educationDegree}">
+                            <option th:each="items: ${educationDegreeList}" th:text="${items.educationDegreeName}"
+                                    th:value="${items.educationDegreeId}"></option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Position</label>
+                        <select class="test" th:field="*{position}">
+                            <option th:each="items: ${positionList}" th:text="${items.positionName}"
+                                    th:value="${items.positionId}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>-->
+<!--                    <button type="submit" class="btn btn-danger" value="delete">Xóa</button>-->
+                    <input type="submit" value="Save"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteEmployee" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn xóa?</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/employee/delete}" method="GET">
+                <div class="modal-body">
+                    <span class="h6">Nhan vien:</span><strong id="nameDelete" class="text-danger ps-2"></strong>
+                    <input type="hidden" name="idDelete" id="idDelete" readonly/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-danger" value="delete">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function employeeDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+        debugger
+    }
+</script>
 <!--<footer th:replace="/layout :: footer"></footer>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

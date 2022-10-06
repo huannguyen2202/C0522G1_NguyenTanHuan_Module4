@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout :: head">
-
 </head>
 <body>
 <div style="background-image: url(https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-powerpoint-don-gian-dep-59_045409561.jpg)">
@@ -18,14 +17,14 @@
               method="POST" novalidate="novalidate">
             <input type="hidden" th:field="*{customerId}"/>
             <div>
-                <label>Customer Name</label>
-                <input type="text" th:field="*{customerName}"/>
+                <label class="test">Customer Name</label>
+                <input class="shadow" type="text" th:field="*{customerName}"/>
                 <p style="color: red" th:errors="*{customerName}"
                    th:if="${#fields.hasErrors('customerName')}"></p>
             </div>
             <div>
                 <label>Customer Birthday</label>
-                <input type="date" th:field="*{customerBirthday}"/>
+                <input class="shadow" type="date" th:field="*{customerBirthday}"/>
                 <p style="color: red" th:errors="*{customerBirthday}"
                    th:if="${#fields.hasErrors('customerBirthday')}"></p>
             </div>
@@ -35,12 +34,12 @@
                    th:errors="*{customerGender}"></p>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="0"/> Nam
+                        <input class="shadow" type="radio" th:field="*{customerGender}" th:value="0"/> Nam
                         <i class="fa-solid fa-mars"></i>
                     </label>
 
                     <label class="d-block me-4">
-                        <input type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
+                        <input class="shadow" type="radio" th:field="*{customerGender}" th:value="1"/> Nữ
                         <i class="fa-solid fa-venus"></i>
                     </label>
 
@@ -52,36 +51,36 @@
             </div>
             <div>
                 <label>Customer IdCard</label>
-                <input type="text" th:field="*{customerIdCard}"/>
+                <input class="shadow" type="text" th:field="*{customerIdCard}"/>
                 <p style="color: red" th:errors="*{customerIdCard}"
                    th:if="${#fields.hasErrors('customerIdCard')}"></p>
             </div>
             <div>
                 <label>Customer Phone</label>
-                <input type="text" th:field="*{customerPhone}"/>
+                <input class="shadow" type="text" th:field="*{customerPhone}"/>
                 <p style="color: red" th:errors="*{customerPhone}"
                    th:if="${#fields.hasErrors('customerPhone')}"></p>
             </div>
             <div>
                 <label>Customer Email</label>
-                <input type="text" th:field="*{customerEmail}"/>
+                <input class="shadow" type="text" th:field="*{customerEmail}"/>
                 <p style="color: red" th:errors="*{customerEmail}"
                    th:if="${#fields.hasErrors('customerEmail')}"></p>
             </div>
             <div>
                 <label>Customer Address</label>
-                <input type="text" th:field="*{customerAddress}"/>
+                <input class="shadow" type="text" th:field="*{customerAddress}"/>
                 <p style="color: red" th:errors="*{customerAddress}"
                    th:if="${#fields.hasErrors('customerAddress')}"></p>
             </div>
             <div>
                 <label>Customer Type </label>
-                <select class="test" th:field="*{customerType}">
+                <select class="test shadow" th:field="*{customerType}">
                     <option th:each="items: ${customerTypeList}" th:text="${items.customerTypeName}"
                             th:value="${items.customerTypeId}"></option>
                 </select>
             </div>
-            <input type="submit" value="Save"/>
+            <input class="shadow" type="submit" value="Save"/>
         </form>
     </div>
     <footer th:replace="/customer/layout :: footer"></footer>

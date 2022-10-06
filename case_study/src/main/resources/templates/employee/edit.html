@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+</head>
+<body>
+<div style="background-image: url(https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-powerpoint-don-gian-dep-59_045409561.jpg)">
+    <h3 style="text-align: center; font-family: Algerian; color: blue; font-size: 40px">Edit Customer</h3>
+    <p style="text-align: center">
+        <i style="color: blue" class="fa-sharp fa-solid fa-backward"></i>
+        <a th:href="@{/employee}">
+            Back to employee list
+        </a>
+    </p>
+    <div id="form" style="background-image: url(https://tophinhanhdep.com/wp-content/uploads/2021/11/Pastel-Ombre-Wallpapers.jpg)">
+        <form action="#" th:action="@{/employee/update}" th:object="${employeeDto}"
+              method="POST" novalidate="novalidate">
+            <input type="hidden" th:field="*{employeeId}"/>
+            <div>
+                <label>Employee Name</label>
+                <input type="text" th:field="*{employeeName}"/>
+                <p style="color: red" th:errors="*{employeeName}"
+                   th:if="${#fields.hasErrors('employeeName')}"></p>
+            </div>
+            <div>
+                <label>Employee Birthday</label>
+                <input type="date" th:field="*{employeeBirthday}"/>
+                <p style="color: red" th:errors="*{employeeBirthday}"
+                   th:if="${#fields.hasErrors('employeeBirthday')}"></p>
+            </div>
+            <div>
+                <label>Employee IdCard</label>
+                <input type="text" th:field="*{employeeIdCard}"/>
+                <p style="color: red" th:errors="*{employeeIdCard}"
+                   th:if="${#fields.hasErrors('employeeIdCard')}"></p>
+            </div>
+            <div>
+                <label>Employee Salary</label>
+                <input type="text" th:field="*{employeeSalary}"/>
+                <p style="color: red" th:errors="*{employeeSalary}"
+                   th:if="${#fields.hasErrors('employeeSalary')}"></p>
+            </div>
+            <div>
+                <label>Employee Phone</label>
+                <input type="text" th:field="*{employeePhone}"/>
+                <p style="color: red" th:errors="*{employeePhone}"
+                   th:if="${#fields.hasErrors('employeePhone')}"></p>
+            </div>
+            <div>
+                <label>Employee Email</label>
+                <input type="text" th:field="*{employeeEmail}"/>
+                <p style="color: red" th:errors="*{employeeEmail}"
+                   th:if="${#fields.hasErrors('employeeEmail')}"></p>
+            </div>
+            <div>
+                <label>Employee Address</label>
+                <input type="text" th:field="*{employeeAddress}"/>
+                <p style="color: red" th:errors="*{employeeAddress}"
+                   th:if="${#fields.hasErrors('employeeAddress')}"></p>
+            </div>
+            <div>
+                <label>Division</label>
+                <select class="test" th:field="*{division}">
+                    <option th:each="items: ${divisionList}" th:text="${items.divisionName}"
+                            th:value="${items.divisionId}"></option>
+                </select>
+            </div>
+            <div>
+                <label>Education Degree</label>
+                <select class="test" th:field="*{educationDegree}">
+                    <option th:each="items: ${educationDegreeList}" th:text="${items.educationDegreeName}"
+                            th:value="${items.educationDegreeId}"></option>
+                </select>
+            </div>
+            <div>
+                <label>Position</label>
+                <select class="test" th:field="*{position}">
+                    <option th:each="items: ${positionList}" th:text="${items.positionName}"
+                            th:value="${items.positionId}"></option>
+                </select>
+            </div>
+            <input type="submit" value="Edit"/>
+        </form>
+    </div>
+    <footer th:replace="/customer/layout :: footer"></footer>
+</div>
+</body>
+</html>

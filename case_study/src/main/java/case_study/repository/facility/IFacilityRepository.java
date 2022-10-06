@@ -13,9 +13,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IFacilityRepository extends JpaRepository<Facility, Integer> {
     @Modifying
-    @Query(value = "update facility set delete_status= 1 where facility_id = :keywordId", nativeQuery = true)
+    @Query(value = "update facility " +
+            "set delete_status= 1 " +
+            "where facility_id = :keywordId", nativeQuery = true)
     void deleteById(@Param("keywordId") int id);
 
-    @Query(value = "select * from facility where facility_name like %:keyword% and delete_status=0", nativeQuery = true)
-    Page<Facility> searchByName(@Param("keyword") String name, Pageable pageable);
+    @Query(value = "select * " +
+            "from facility " +
+            "where facility_name like %:name% " +
+            "and delete_status=0", nativeQuery = true)
+    Page<Facility> searchByName(@Param("name") String name, Pageable pageable);
 }

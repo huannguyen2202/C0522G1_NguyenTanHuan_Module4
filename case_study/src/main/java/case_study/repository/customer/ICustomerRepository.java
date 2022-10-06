@@ -12,10 +12,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Modifying
-    @Query(value = "update customer set delete_status= 1 where customer_id = :keywordId", nativeQuery = true)
-    void deleteById(@Param("keywordId") int id);
+    @Query(value = "update customer set delete_status= 1 where customer_id = :name", nativeQuery = true)
+    void deleteById(@Param("name") int id);
 
-    @Query(value = "select * from customer where customer_name like %:keyword%  and customer_phone like %:keyword1% and customer_address like %:keyword2% and delete_status=0", nativeQuery = true)
-    Page<Customer> searchByName(@Param("keyword") String name, @Param("keyword1") String phone, @Param("keyword2") String address, Pageable pageable);
+    @Query(value = "select * " +
+            "from customer " +
+            "where customer_name like %:name%  " +
+                "and customer_phone like %:phone% " +
+                "and customer_address like %:address% " +
+                "and delete_status=0", nativeQuery = true)
+    Page<Customer> searchByName(@Param("name") String name,
+                                @Param("phone") String phone,
+                                @Param("address") String address, Pageable pageable);
 
 }

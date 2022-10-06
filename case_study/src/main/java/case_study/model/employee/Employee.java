@@ -14,6 +14,8 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
+    private boolean deleteStatus;
+
 
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "positionId")
@@ -30,12 +32,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer employeeId, String employeeName,
-                    String employeeBirthday, String employeeIdCard,
-                    String employeeSalary, String employeePhone,
-                    String employeeEmail, String employeeAddress,
-                    Position position, EducationDegree educationDegree,
-                    Division division) {
+    public Employee(Integer employeeId, String employeeName, String employeeBirthday,
+                    String employeeIdCard, String employeeSalary, String employeePhone,
+                    String employeeEmail, String employeeAddress, boolean deleteStatus,
+                    Position position, EducationDegree educationDegree, Division division) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
@@ -44,6 +44,7 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
+        this.deleteStatus = deleteStatus;
         this.position = position;
         this.educationDegree = educationDegree;
         this.division = division;
@@ -111,6 +112,14 @@ public class Employee {
 
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
+    }
+
+    public boolean isDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     public Position getPosition() {
