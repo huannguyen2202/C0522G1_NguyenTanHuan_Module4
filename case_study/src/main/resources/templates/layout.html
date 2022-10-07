@@ -6,18 +6,21 @@
 
     <title>$Title$</title>
     <style>
-        #test1 {
+        .o{
+            font-family:"UTM Futura Extra";
+            border: 6px solid burlywood;
             margin-top: -5px;
             display: flex;
             /*justify-content: center;*/
             align-items: center;
-            min-height: 140px;
-            background-color: #07252d;
+            min-height: 180px;
+            /*background-color: #07252d;*/
+            background-color: black;
             margin-bottom: 5px;
         }
 
-        h2 {margin-top: -40px;
-            font-weight: bold;
+        .c {margin-top: -30px;
+            /*font-weight: bold;*/
             position: relative;
             font-size: 60px;
             letter-spacing: 15px;
@@ -28,7 +31,7 @@
             -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
             line-height: 0.70em;
             outline: none;
-            animation: animate 8s linear infinite;
+            animation: animate 7s linear infinite;
         }
 
         @keyframes animate {
@@ -52,13 +55,22 @@
         #is {
             background-color: red;
             animation-name: keyframes1;
-            animation-duration: 10s;
+            animation-duration: 8s;
             animation-iteration-count: infinite;
         }
 
         @keyframes keyframes1 {
             0% {
                 background-color: #f2f2f2;
+            }
+            25% {
+                background-color: red;
+            }
+            50% {
+                background-color: blue;
+            }
+            75% {
+                background-color: yellow;
             }
             100% {
                 background-color: lemonchiffon;
@@ -208,10 +220,19 @@
 <body>
 <div class="container-fluid">
     <footer th:fragment="head">
+        <div class="row bk hn co o">
+            <div col-sm-12 col-lg-12 col-md-12>
+                <!--        <marquee direction="right">-->
+
+                <!--        </marquee>-->
+                <p class="bk hn co c" contenteditable="true"><i style="font-size: 90px" class="fa-brands fa-fantasy-flight-games"></i>Furama Resort<i style="font-size: 50px" class="fa-brands fa-angellist"></i></p>
+
+            </div>
+        </div>
         <!--    hàng 1-->
         <div id="is" style="background-color: #f2f2f2; border-top: 5px solid burlywood" class="row">
             <div class="col-sm-3 col-lg-3 col-md-3 head">
-                <img src="https://www.furama.com/images/LOGOFurama_4C_Normal.png" width="280px" height="80px"
+                <img src="https://www.furama.com/images/LOGOFurama_4C_Normal.png" width="260px" height="65px"
                      style="margin-top: 25px;margin-left: 40px">
             </div>
             <div class="col-sm-3 col-lg-3 col-md-3 head">
@@ -221,7 +242,6 @@
                     103 - 105 Vo Nguyen Giap Street,<br>
                     Khue My Ward, Ngu Hanh Son District,<br>
                     Danang City, Vietnam<br>
-                    7,0 km from Danang Airport
                 </p>
             </div>
             <div class="col-sm-3 col-lg-3 col-md-3 head ">
@@ -289,15 +309,6 @@
             </nav>
         </div>
     </footer>
-    <div class="row" id="test1">
-        <div col-sm-12 col-lg-12 col-md-12>
-            <!--        <marquee direction="right">-->
-
-            <!--        </marquee>-->
-            <h2 contenteditable="true">Furama Resort</h2>
-
-        </div>
-    </div>
     <!--    hàng 3-->
     <div class="row">
         <div class="col-sm-2 col-lg-2 col-md-2 cot31 left">

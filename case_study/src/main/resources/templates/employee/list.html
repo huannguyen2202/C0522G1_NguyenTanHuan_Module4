@@ -44,7 +44,7 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${employeeList}">
-        <td th:text="${rowStat.count}"></td>
+        <td th:text="${employeeList.number*employeeList.size+rowStat.count}"></td>
         <td th:text="${row.employeeName}"></td>
         <td th:text="${row.employeeBirthday}"></td>
         <td th:text="${row.employeeAddress}"></td>
@@ -83,10 +83,35 @@
     </tr>
     </tbody>
 </table>
-<div>
-    <a th:href="@{'/employee'(page=${employeeList.number - 1},name=${name})}" th:if="${employeeList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
-    <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
-    <a th:href="@{'/employee'(page=${employeeList.number + 1},name=${name})}" th:if="${employeeList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+<!--<div>-->
+<!--    <a th:href="@{'/employee'(page=${employeeList.number - 1},name=${name})}" th:if="${employeeList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>-->
+<!--    <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>-->
+<!--    <a th:href="@{'/employee'(page=${employeeList.number + 1},name=${name})}" th:if="${employeeList.hasNext()}"><i class="fa-solid fa-forward"></i></a>-->
+<!--</div>-->
+<div style="margin-left: 46%; margin-top: 10px">
+    <ul class="pagination">
+
+        <li class="page-item"><a class="page-link" th:href="@{'/employee'(page=${employeeList.number - 1},name=${name})}"
+                                 th:if="${employeeList.hasPrevious()}">Previous</a></li>
+        <li class="page-item"><a class="page-link" th:if="${employeeList.hasPrevious()}"
+                                 th:href="@{'/employee'(page=${employeeList.number - 1},name=${name})}"
+                                 th:text="${employeeList.number }"></a>
+        </li>
+
+        <li class="page-item active">
+            <a class="page-link" th:text="${employeeList.number + 1}"
+               th:href="@{'/employee'(page=${employeeList.number},name=${name})}">
+                <span class="sr-only"></span></a>
+        </li>
+
+        <li class="page-item"><a class="page-link" th:if="${employeeList.hasNext()}"
+                                 th:href="@{'/employee'(page=${employeeList.number + 1},name=${name})}"
+                                 th:text="${employeeList.number + 2}"></a>
+        </li>
+        <li class="page-item"><a class="page-link" th:href="@{'/employee'(page=${employeeList.number + 1},name=${name})}"
+                                 th:if="${employeeList.hasNext()}">Next</a></li>
+
+    </ul>
 </div>
 <div class="modal fade" id="createEmployee" tabindex="-1" aria-labelledby="exampleModalLabel2"
      aria-hidden="true">

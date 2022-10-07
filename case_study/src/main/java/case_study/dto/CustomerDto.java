@@ -16,8 +16,8 @@ public class CustomerDto implements Validator {
             message = "Tên khách hàng không được chứa số, và các kí tự đầu tiên của mỗi từ phải viết hoa!")
     private String customerName;
 
-//    @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
-//            message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
+    @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
+            message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
     private String customerBirthday;
 
     private String customerGender;

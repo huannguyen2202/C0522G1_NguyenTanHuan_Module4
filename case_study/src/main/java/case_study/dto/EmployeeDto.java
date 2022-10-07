@@ -6,12 +6,24 @@ import case_study.model.employee.Position;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class EmployeeDto implements Validator {
     private Integer employeeId;
+
+    @NotBlank(message = "Tên không được để trống.")
+    @Pattern(regexp = "^(([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5})| *$",
+            message = "Ten nhan vien khong chua so va ki tu dau tien phai viet hoa!")
     private String employeeName;
+
     private String employeeBirthday;
     private String employeeIdCard;
+
+    @NotBlank(message = "Lương không được để trống.")
+    @Pattern(regexp = "^[1-9]\\d*| *$", message = "Luong la so duong!.")
     private String employeeSalary;
+
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
@@ -137,8 +149,8 @@ public class EmployeeDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         EmployeeDto employeeDto = (EmployeeDto) target;
-        if ("admin".equals(employeeDto.getEmployeeName())){
-            errors.rejectValue("employeeName","","Khong duoc dung admin");
+        if ("admin".equals(employeeDto.getEmployeeName())) {
+            errors.rejectValue("employeeName", "", "Khong duoc dung admin");
         }
     }
 }

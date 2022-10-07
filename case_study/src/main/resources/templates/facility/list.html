@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${facilityList}">
-        <td th:text="${rowStat.count}"></td>
+        <td th:text="${facilityList.number*facilityList.size+rowStat.count}"></td>
         <td th:text="${row.facilityName}"></td>
         <td th:text="${row.facilityArea}"></td>
         <td th:text="${row.rentCost}"></td>
@@ -50,7 +50,6 @@
             <a th:href="@{/facility/{id}/edit(id=${row.facilityId})}">
                 <button class="btn btn-primary btn-outline-secondary btn-sm">
                     <span class="fa-regular fa-pen-to-square text-light h6 m-auto px-2"></span>
-                    <!--                    <span style="color: blue" class=" text-light h6 m-auto px-2">Edit</span>-->
                 </button>
             </a>
         </td>
@@ -71,10 +70,34 @@
     </tr>
     </tbody>
 </table>
-<div>
-    <a th:href="@{'/facility'(page=${facilityList.number - 1},name=${name})}" th:if="${facilityList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>
-    <span th:text="${facilityList.number + 1}"></span>/<span th:text="${facilityList.totalPages}"></span>
-    <a th:href="@{'/facility'(page=${facilityList.number + 1},name=${name})}" th:if="${facilityList.hasNext()}"><i class="fa-solid fa-forward"></i></a>
+<!--<div>-->
+<!--    <a th:href="@{'/facility'(page=${facilityList.number - 1},name=${name})}" th:if="${facilityList.hasPrevious()}"><i class="fa-sharp fa-solid fa-backward"></i></a>-->
+<!--    <span th:text="${facilityList.number + 1}"></span>/<span th:text="${facilityList.totalPages}"></span>-->
+<!--    <a th:href="@{'/facility'(page=${facilityList.number + 1},name=${name})}" th:if="${facilityList.hasNext()}"><i class="fa-solid fa-forward"></i></a>-->
+<!--</div>-->
+<div style="margin-left: 46%; margin-top: 10px">
+    <ul class="pagination">
+
+        <li class="page-item"><a class="page-link" th:href="@{'/facility'(page=${facilityList.number - 1},name=${name})}"
+                                 th:if="${facilityList.hasPrevious()}">Previous</a></li>
+        <li class="page-item"><a class="page-link" th:if="${facilityList.hasPrevious()}"
+                                 th:href="@{'/facility'(page=${facilityList.number - 1},name=${name})}"
+                                 th:text="${facilityList.number }"></a>
+        </li>
+
+        <li class="page-item active">
+            <a class="page-link" th:text="${facilityList.number + 1}"
+               th:href="@{'/facility'(page=${facilityList.number},name=${name})}">
+                <span class="sr-only"></span></a>
+        </li>
+
+        <li class="page-item"><a class="page-link" th:if="${facilityList.hasNext()}"
+                                 th:href="@{'/facility'(page=${facilityList.number + 1},name=${name})}"
+                                 th:text="${facilityList.number + 2}"></a>
+        </li>
+        <li class="page-item"><a class="page-link" th:href="@{'/facility'(page=${facilityList.number + 1},name=${name})}"
+                                 th:if="${facilityList.hasNext()}">Next</a></li>
+    </ul>
 </div>
 <div class="modal fade" id="deleteFacility" tabindex="-1" aria-labelledby="exampleModalLabel1"
      aria-hidden="true">
